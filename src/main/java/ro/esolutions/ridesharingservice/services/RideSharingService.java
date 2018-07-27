@@ -18,7 +18,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class RideSharingService {
 
-
     private final Map<String, Car> cars = new ConcurrentHashMap<>();
 
 
