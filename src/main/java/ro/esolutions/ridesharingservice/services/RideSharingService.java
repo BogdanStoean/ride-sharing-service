@@ -1,5 +1,8 @@
 package ro.esolutions.ridesharingservice.services;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ro.esolutions.ridesharingservice.exceptions.CarAlreadyExistsException;
 import ro.esolutions.ridesharingservice.exceptions.CarNotFoundException;
@@ -12,7 +15,9 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@Slf4j
 public class RideSharingService {
+
 
     private final Map<String, Car> cars = new ConcurrentHashMap<>();
 
@@ -44,5 +49,21 @@ public class RideSharingService {
         } else {
             throw new NoCarAvailableException();
         }
+    }
+
+    @Scheduled(fixedRate = 500000)
+    public void changeAllPendingCarsToAvailable() {
+        log.info("SCHEDULED TASK");
+    }
+
+    @Async
+    public void computeRideSharingTotalForOneDay() {
+        log.info("ASYNC TASK STARTED");
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        log.info("ASYNC TASK ENDED");
     }
 }
