@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ro.esolutions.ridesharingservice.models.Car;
 import ro.esolutions.ridesharingservice.services.RideSharingService;
 
+import javax.validation.Valid;
 import java.util.Objects;
 
 @RestController
@@ -18,7 +19,7 @@ public class CarResource {
     }
 
     @PostMapping
-    public ResponseEntity<Car> registerCar(@RequestBody final Car car) {
+    public ResponseEntity<Car> registerCar(@RequestBody @Valid final Car car) {
         return ResponseEntity.ok(rideSharingService.registerCar(car));
     }
 
