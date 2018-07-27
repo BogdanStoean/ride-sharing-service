@@ -1,0 +1,9 @@
+{
+  "model": "Dacia Logan",
+  "carId": "bbbbb",
+  "driver": {
+    "name": "Test",
+    "rating": 5
+  },
+  "status": "AVAILABLE"
+}
