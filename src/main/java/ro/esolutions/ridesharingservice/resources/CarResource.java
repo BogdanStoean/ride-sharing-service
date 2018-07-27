@@ -27,5 +27,10 @@ public class CarResource {
         return ResponseEntity.ok(rideSharingService.checkCar(carId));
     }
 
+    @GetMapping("/available")
+    public ResponseEntity<Car> getAvailableCar() {
+        return ResponseEntity.ok(rideSharingService.getMeAnAvailableCar());
+    }
+
 
 }
