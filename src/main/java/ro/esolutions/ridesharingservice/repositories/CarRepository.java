@@ -1,5 +1,7 @@
 package ro.esolutions.ridesharingservice.repositories;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ro.esolutions.ridesharingservice.entities.Car;
 import ro.esolutions.ridesharingservice.models.CarStatus;
@@ -12,4 +14,6 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     Optional<Car> findByCarId(String carId);
 
     Stream<Car> findByStatus(CarStatus carStatus);
+
+    Page<Car> findByStatus(CarStatus status, Pageable pageable);
 }
