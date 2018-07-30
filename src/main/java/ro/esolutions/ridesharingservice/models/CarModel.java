@@ -5,12 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Driver {
+public class CarModel {
 
-    private String name;
-    private Integer rating;
+    private String model;
+    private String carId;
+    private DriverModel driver;
+    @NotNull
+    private CarStatus status;
+
 }

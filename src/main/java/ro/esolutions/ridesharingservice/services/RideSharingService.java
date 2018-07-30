@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ro.esolutions.ridesharingservice.exceptions.CarAlreadyExistsException;
 import ro.esolutions.ridesharingservice.exceptions.CarNotFoundException;
 import ro.esolutions.ridesharingservice.exceptions.NoCarAvailableException;
-import ro.esolutions.ridesharingservice.models.Car;
+import ro.esolutions.ridesharingservice.models.CarModel;
 import ro.esolutions.ridesharingservice.models.CarStatus;
 
 import java.util.Map;
@@ -18,10 +18,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @Slf4j
 public class RideSharingService {
 
-    private final Map<String, Car> cars = new ConcurrentHashMap<>();
+    private final Map<String, CarModel> cars = new ConcurrentHashMap<>();
 
 
-    public Car registerCar(final Car car) {
+    public CarModel registerCar(final CarModel car) {
         if (cars.get(car.getCarId()) == null) {
             return cars.put(car.getCarId(), car);
         } else {
@@ -29,7 +29,7 @@ public class RideSharingService {
         }
     }
 
-    public Car checkCar(String carId) {
+    public CarModel checkCar(String carId) {
         if (cars.get(carId) != null) {
             return cars.get(carId);
         } else {
@@ -39,8 +39,8 @@ public class RideSharingService {
     }
 
 
-    public Car getMeAnAvailableCar() {
-        Optional<Car> optionalCar = cars.values().stream()
+    public CarModel getMeAnAvailableCar() {
+        Optional<CarModel> optionalCar = cars.values().stream()
                 .filter(car -> CarStatus.AVAILABLE.equals(car.getStatus()))
                 .findAny();
         if (optionalCar.isPresent()) {

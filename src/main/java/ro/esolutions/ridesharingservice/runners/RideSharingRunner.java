@@ -2,9 +2,9 @@ package ro.esolutions.ridesharingservice.runners;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import ro.esolutions.ridesharingservice.models.Car;
+import ro.esolutions.ridesharingservice.models.CarModel;
 import ro.esolutions.ridesharingservice.models.CarStatus;
-import ro.esolutions.ridesharingservice.models.Driver;
+import ro.esolutions.ridesharingservice.models.DriverModel;
 import ro.esolutions.ridesharingservice.services.RideSharingService;
 
 import java.util.Objects;
@@ -23,9 +23,9 @@ public class RideSharingRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         IntStream.rangeClosed(1, 10).asLongStream().forEach(i -> {
             rideSharingService.registerCar(
-                    Car
+                    CarModel
                             .builder()
-                            .driver(Driver.builder().name("driver" + i).rating((int) i % 5).build())
+                            .driver(DriverModel.builder().name("driver" + i).rating((int) i % 5).build())
                             .status(CarStatus.AVAILABLE)
                             .carId(i + "")
                             .model("model" + i)

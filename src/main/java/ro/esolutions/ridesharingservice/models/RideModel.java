@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Builder
-public class Ride {
+public class RideModel {
     private String client;
-    private Car car;
-    private Location source;
-    private Location destination;
+    private CarModel car;
+    private LocationModel source;
+    private LocationModel destination;
     private LocalDateTime sourceTime;
     private LocalDateTime destTime;
     private BigDecimal cost;

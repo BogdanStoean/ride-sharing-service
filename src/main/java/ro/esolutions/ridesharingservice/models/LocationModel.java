@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 @Builder
-public class Location {
+public class LocationModel {
     private BigDecimal lat;
     private BigDecimal lng;
 }
