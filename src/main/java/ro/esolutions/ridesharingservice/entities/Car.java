@@ -20,6 +20,8 @@ public class Car {
     @GeneratedValue(generator = "CAR_GEN_SEQ", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "CAR_GEN_SEQ", sequenceName = "CAR_SEQ", allocationSize = 1)
     private Long id;
+
+    @Column(unique = true)
     private String carId;
     private String model;
     @ManyToOne(cascade = CascadeType.PERSIST)

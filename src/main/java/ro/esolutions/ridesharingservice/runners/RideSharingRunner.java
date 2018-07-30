@@ -10,7 +10,7 @@ import ro.esolutions.ridesharingservice.services.RideSharingService;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-@Component
+//@Component
 public class RideSharingRunner implements CommandLineRunner {
 
     private final RideSharingService rideSharingService;
