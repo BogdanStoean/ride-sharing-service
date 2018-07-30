@@ -7,8 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ro.esolutions.ridesharingservice.models.CarStatus;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,10 +16,15 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Car {
 
-    private String model;
+    @Id
+    @GeneratedValue(generator = "CAR_GEN_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "CAR_GEN_SEQ", sequenceName = "CAR_SEQ", allocationSize = 1)
+    private Long id;
     private String carId;
+    private String model;
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Driver driver;
-    @NotNull
+    @Enumerated(value = EnumType.STRING)
     private CarStatus status;
 
 
