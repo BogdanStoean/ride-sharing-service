@@ -1,6 +1,8 @@
 version: '2'
 services:
   ride-sharing-service:
+    ports:
+      - 8080:8080
     image: local/ride-sharing-service:1
     environment:
       JAVA_OPTS: -Xms200m -Xmx380m -XX:MaxMetaspaceSize=100m -Duser.timezone=Europe/Bucharest -Djava.security.egd=file:/dev/./urandom
