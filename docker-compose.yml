@@ -1,0 +1,15 @@
+version: '2'
+services:
+  ride-sharing-service:
+    image: local/ride-sharing-service:1
+    environment:
+      JAVA_OPTS: -Xms200m -Xmx380m -XX:MaxMetaspaceSize=100m -Duser.timezone=Europe/Bucharest -Djava.security.egd=file:/dev/./urandom
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/ridedb
+    depends_on:
+      - db
+  db:
+    image: postgres:10.3
+    environment:
+      POSTGRES_USER: internship
+      POSTGRES_PASSWORD: internship
+      POSTGRES_DB: ridedb
