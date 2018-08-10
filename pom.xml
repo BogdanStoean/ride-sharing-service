@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <buildNumber>1</buildNumber>
     </properties>
 
     <dependencies>
@@ -67,10 +68,23 @@
     </dependencies>
 
     <build>
+        <finalName>ride-sharing-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.2</version>
+                <configuration>
+                    <repository>local/${project.build.finalName}</repository>
+                    <tag>${buildNumber}</tag>
+                </configuration>
             </plugin>
         </plugins>
     </build>
